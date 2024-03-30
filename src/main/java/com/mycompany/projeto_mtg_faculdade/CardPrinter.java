@@ -4,19 +4,25 @@
  */
 package com.mycompany.projeto_mtg_faculdade;
 import io.magicthegathering.javasdk.resource.Card;
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author joaox
  */
 public class CardPrinter {
-    void printCard(Card card){
-        System.out.println("ID: " + card.getMultiverseid());
-        System.out.println(card.getName() + "(" + card.getSetName() + ")    \\n (" + card.getManaCost() + ")");
-        System.out.println(card.getType());
-        System.out.println(card.getText());
-        System.out.println((card.getPower()!=null)?(card.getPower() + "/" + card.getToughness() + "\n"): "");
-        System.out.println((card.getLoyalty()!=null)?("[" + card.getLoyalty() + "]" + "\n"): "");
-        System.out.println("\033[3m" + ((card.getFlavor()!=null)?card.getFlavor() : " ")+"\033[0m\n");
-        System.out.println();
+    
+    String[] getCardInfo(Card card) {
+        List<String> cardInfo = new ArrayList<>();
+        cardInfo.add(Integer.toString(card.getMultiverseid()));
+        cardInfo.add(card.getName() + "(" + card.getSetName() + ")" );
+        cardInfo.add(card.getManaCost());
+        cardInfo.add(card.getType());
+        cardInfo.add(card.getText());
+        cardInfo.add((card.getPower() != null) ? (card.getPower() + "/" + card.getToughness()) : "");
+        cardInfo.add((card.getLoyalty() != null) ? ("[" + card.getLoyalty() + "]") : "");
+        cardInfo.add("\033 " + ((card.getFlavor() != null) ? card.getFlavor() : " ") + "\033");
+        return cardInfo.toArray(new String[0]);
     }
 }
+

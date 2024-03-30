@@ -21,6 +21,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <exec.mainClass>com.mycompany.projeto_mtg_faculdade.Projeto_Mtg_Faculdade</exec.mainClass>
+        <exec.mainClass>com.mycompany.projeto_mtg_faculdade.SearchForm</exec.mainClass>
     </properties>
 </project>

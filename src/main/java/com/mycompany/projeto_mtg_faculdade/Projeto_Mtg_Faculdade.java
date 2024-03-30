@@ -33,7 +33,7 @@ public class Projeto_Mtg_Faculdade {
              for(Card c:cards){
                  
                  if(c.getMultiverseid() != -1){
-                     printer.printCard(c);
+                     
                      numresult++;
                  }
                  
