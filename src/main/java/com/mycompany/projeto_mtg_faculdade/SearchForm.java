@@ -19,6 +19,8 @@ public class SearchForm extends javax.swing.JFrame {
     /**
      * Creates new form SearchForm
      */
+    
+    
     public SearchForm() {
         initComponents();
     }
@@ -81,6 +83,11 @@ public class SearchForm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable2);
 
         jButton2.setText("Export to Arena");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("Load");
 
@@ -179,7 +186,21 @@ public class SearchForm extends javax.swing.JFrame {
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
+        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
+        int[] selectedRows = jTable2.getSelectedRows();
+        for (int i = selectedRows.length - 1; i >= 0; i--) {
+            tblModel2.removeRow(selectedRows[i]);
+        }
     }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:\
+        
+        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
+        ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
+        controler.setArquivo("salvar");
+        controler.WriteDeck(true);
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
