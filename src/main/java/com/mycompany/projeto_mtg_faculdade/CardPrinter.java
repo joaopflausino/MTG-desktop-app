@@ -14,8 +14,8 @@ public class CardPrinter {
     
     String[] getCardInfo(Card card) {
         List<String> cardInfo = new ArrayList<>();
-        cardInfo.add(Integer.toString(card.getMultiverseid()));
-        cardInfo.add(card.getName() + "(" + card.getSetName() + ")" );
+        cardInfo.add(card.getName());
+        cardInfo.add(card.getSetName());
         cardInfo.add(card.getManaCost());
         cardInfo.add(card.getType());
         cardInfo.add(card.getText());
