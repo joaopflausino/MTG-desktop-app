@@ -90,6 +90,11 @@ public class SearchForm extends javax.swing.JFrame {
         });
 
         jButton3.setText("Load");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jButton4.setText("Add");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,6 +206,14 @@ public class SearchForm extends javax.swing.JFrame {
         controler.setArquivo("salvar");
         controler.WriteDeck(true);
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
+        ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
+        controler.setArquivo("Abrir");
+        controler.ReadDeck();
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,8 @@ package com.mycompany.projeto_mtg_faculdade;
 
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -20,8 +22,21 @@ public class ControllerFileTextDeck extends ControllerFileText {
     }
 
     public boolean ReadDeck() {
-       System.out.println("calma");
-       return false;
+        if (ler()) {
+            String conteudo = getTexto();
+            StringTokenizer linha = new StringTokenizer(conteudo, " ");
+            if (linha.countTokens() >= 2) {
+                String quantity = linha.nextToken();
+                StringBuilder name = new StringBuilder();
+                while (linha.hasMoreTokens()) {
+                    name.append(linha.nextToken()).append(" ");
+                }
+                table.addRow(new Object[]{quantity, name.toString().trim()});
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean WriteDeck(boolean append) {
@@ -36,7 +51,6 @@ public class ControllerFileTextDeck extends ControllerFileText {
             }
             sb.append(System.lineSeparator()); // New line separator
         }
-        System.out.println(sb.toString());
         setTexto(sb.toString());
         aux = (escrever(append));
 
