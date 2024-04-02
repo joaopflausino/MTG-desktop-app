@@ -24,14 +24,18 @@ public class ControllerFileTextDeck extends ControllerFileText {
     public boolean ReadDeck() {
         if (ler()) {
             String conteudo = getTexto();
-            StringTokenizer linha = new StringTokenizer(conteudo, " ");
-            if (linha.countTokens() >= 2) {
-                String quantity = linha.nextToken();
-                StringBuilder name = new StringBuilder();
-                while (linha.hasMoreTokens()) {
-                    name.append(linha.nextToken()).append(" ");
-                }
-                table.addRow(new Object[]{quantity, name.toString().trim()});
+            System.out.println(conteudo);
+            StringTokenizer linha = new StringTokenizer(conteudo, "\n");
+            while (linha.hasMoreTokens()) {
+                // Get the quantity
+                String quantityToken = linha.nextToken().trim();
+                
+
+                // Get the name
+                String name = linha.nextToken().trim();
+
+                // Add the data to the table model
+                table.addRow(new Object[]{quantityToken, name});
             }
             return true;
         } else {

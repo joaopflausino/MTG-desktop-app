@@ -46,6 +46,7 @@ public class ControllerFileText extends ControllerFile {
                 leitor = new BufferedReader(new FileReader(arquivo));
                 while (leitor.ready()) {
                     line.append(leitor.readLine());
+                    line.append("\n");
                 }
                 leitor.close();
                 setTexto(line.toString());
