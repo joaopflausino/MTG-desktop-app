@@ -16,15 +16,20 @@ import javax.swing.table.DefaultTableModel;
 public class ControllerFileTextDeck extends ControllerFileText {
     
     private  DefaultTableModel table;
+    private DefaultTableModel table2 = null ;
 
-    public ControllerFileTextDeck(DefaultTableModel table) {
-        this.table = table;
+    public ControllerFileTextDeck(DefaultTableModel... tables) {
+        if (tables.length >= 1) {
+            this.table = tables[0];
+        }
+        if (tables.length >= 2) {
+            this.table2 = tables[1];
+        }
     }
 
     public boolean ReadDeck() {
         if (ler()) {
             String conteudo = getTexto();
-            System.out.println(conteudo);
             StringTokenizer linha = new StringTokenizer(conteudo, "\n");
             while (linha.hasMoreTokens()) {
                 // Get the quantity
