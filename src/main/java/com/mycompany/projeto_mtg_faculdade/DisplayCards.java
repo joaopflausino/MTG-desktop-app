@@ -36,7 +36,7 @@ public class DisplayCards {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "deu caca" + e);
+            JOptionPane.showMessageDialog(null, "deu caca\n" + e);
         }
     }
     

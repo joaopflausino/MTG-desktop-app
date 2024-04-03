@@ -28,14 +28,12 @@ public class ControllerFileTextDeck extends ControllerFileText {
             StringTokenizer linha = new StringTokenizer(conteudo, "\n");
             while (linha.hasMoreTokens()) {
                 // Get the quantity
-                String quantityToken = linha.nextToken().trim();
-                
-
-                // Get the name
-                String name = linha.nextToken().trim();
+                String getToken = linha.nextToken().trim();
+                String quantityToken = getToken.substring(0, getToken.indexOf(" "));
+                String nameToken = getToken.substring(getToken.indexOf(" ") + 1);
 
                 // Add the data to the table model
-                table.addRow(new Object[]{quantityToken, name});
+                table.addRow(new Object[]{quantityToken, nameToken});
             }
             return true;
         } else {
