@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.projeto_mtg_faculdade;
+package com.mycompany.projeto_mtg_faculdade.Model;
 
+import com.mycompany.projeto_mtg_faculdade.Model.CardPrinter;
 import io.magicthegathering.javasdk.api.CardAPI;
 import io.magicthegathering.javasdk.resource.Card;
 import java.util.ArrayList;

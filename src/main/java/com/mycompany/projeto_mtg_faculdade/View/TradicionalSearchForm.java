@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.projeto_mtg_faculdade;
+package com.mycompany.projeto_mtg_faculdade.View;
 
+import com.mycompany.projeto_mtg_faculdade.Controller.AddToTable;
+import com.mycompany.projeto_mtg_faculdade.Controller.ControllerFileTextDeck;
+import com.mycompany.projeto_mtg_faculdade.Model.DisplayCards;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -40,6 +43,7 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,6 +120,18 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
+        jButton6.setText("<html>add to<br>sideboard</html>");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,8 +146,10 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -156,7 +174,9 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(61, 61, 61)
-                        .addComponent(jButton4))
+                        .addComponent(jButton4)
+                        .addGap(62, 62, 62)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -203,7 +223,7 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
 
         DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
         ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
-        controler.setArquivo("salvar");
+        controler.setAcharArquivo("salvar");
         controler.WriteDeck(true);
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -212,7 +232,7 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
         DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
         ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
         tblModel2.setRowCount(0);
-        controler.setArquivo("Abrir");
+        controler.setAcharArquivo("Abrir");
         controler.ReadDeck();
     }//GEN-LAST:event_jButton3MouseClicked
 
@@ -224,6 +244,19 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
         display.fetcher(filter, tblModel);
 
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        int selectedRow = jTable1.getSelectedRow();
+        DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel tblModel2 = (DefaultTableModel) jTable3.getModel();
+        AddToTable Adder = new AddToTable();
+        Adder.add(selectedRow, tblModel, tblModel2);
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,6 +299,7 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

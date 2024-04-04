@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.projeto_mtg_faculdade;
+package com.mycompany.projeto_mtg_faculdade.Controller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -48,6 +48,12 @@ public class SecureLogin {
         String hashedUsername = SHA512(username);
         String hashedPassword = SHA512(password);
         System.out.println(filePath);
+        
+        if (userExists(hashedUsername)) {
+            JOptionPane.showMessageDialog(null, "Username already exists!");
+            return false;
+        }
+        
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             writer.write(hashedUsername + "-" + hashedPassword);
             writer.newLine();
@@ -83,6 +89,33 @@ public class SecureLogin {
                 return true;
             }
         }
+        return false;
+    }
+    
+    private boolean userExists(String username) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("-");
+                if (parts.length > 0 && parts[0].equals(username)) {
+                    return true; // User already exists
+                }
+            }
+            return false; // User not found
+        }
+    }
+    
+    public boolean updateUser(String oldUsername, String newUsername, String newPassword) throws IOException {
+        String hashedOldUsername = SHA512(oldUsername);
+        String hashedNewUsername = SHA512(newUsername);
+        String hashedNewPassword = SHA512(newPassword);
+
+        // Check if the user exists
+        if (!userExists(hashedOldUsername)) {
+            JOptionPane.showMessageDialog(null, "User does not exist!");
+            return false;
+        }
+        // Create a temporary file to store updated credentials
         return false;
     }
 

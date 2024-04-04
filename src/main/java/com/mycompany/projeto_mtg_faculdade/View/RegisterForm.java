@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.projeto_mtg_faculdade;
+package com.mycompany.projeto_mtg_faculdade.View;
 
+import com.mycompany.projeto_mtg_faculdade.Controller.SecureLogin;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 

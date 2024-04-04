@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.projeto_mtg_faculdade;
+package com.mycompany.projeto_mtg_faculdade.View;
 
+import com.mycompany.projeto_mtg_faculdade.Controller.ControllerFileTextDeck;
+import com.mycompany.projeto_mtg_faculdade.Model.DisplayCards;
+import com.mycompany.projeto_mtg_faculdade.Controller.AddToTable;
 import io.magicthegathering.javasdk.api.CardAPI;
 import io.magicthegathering.javasdk.resource.Card;
 import java.util.ArrayList;
@@ -44,6 +47,7 @@ public class CommanderSearchForm extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,6 +114,13 @@ public class CommanderSearchForm extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("<html>Remove<br>1</html>");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,11 +131,10 @@ public class CommanderSearchForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51)
-                        .addComponent(jButton1)
-                        .addContainerGap(662, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -133,9 +143,11 @@ public class CommanderSearchForm extends javax.swing.JFrame {
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton5)
-                        .addGap(12, 12, 12))))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,8 +166,10 @@ public class CommanderSearchForm extends javax.swing.JFrame {
                         .addGap(61, 61, 61)
                         .addComponent(jButton4))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jButton5)))
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
@@ -199,7 +213,7 @@ public class CommanderSearchForm extends javax.swing.JFrame {
         
         DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
         ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
-        controler.setArquivo("salvar");
+        controler.setAcharArquivo("salvar");
         controler.WriteDeck(true);
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -208,9 +222,26 @@ public class CommanderSearchForm extends javax.swing.JFrame {
         DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
         ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
         tblModel2.setRowCount(0);
-        controler.setArquivo("Abrir");
+        controler.setAcharArquivo("Abrir");
         controler.ReadDeck();
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
+        int selectedRow = jTable2.getSelectedRow();
+        if (selectedRow != -1) {
+                    // Decrement the quantity value in the selected row
+                    int currentValue = (int) tblModel2.getValueAt(selectedRow, 0);
+                    if (currentValue > 1) {
+                        tblModel2.setValueAt(currentValue - 1, selectedRow, 0);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Quantity cannot be less than one.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please select a row to decrement quantity.");
+                }
+    }//GEN-LAST:event_jButton6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -254,6 +285,7 @@ public class CommanderSearchForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

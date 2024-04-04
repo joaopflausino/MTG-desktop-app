@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.projeto_mtg_faculdade;
+package com.mycompany.projeto_mtg_faculdade.Model;
 import io.magicthegathering.javasdk.resource.Card;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class CardPrinter {
         cardInfo.add(card.getText());
         cardInfo.add((card.getPower() != null) ? (card.getPower() + "/" + card.getToughness()) : "");
         cardInfo.add((card.getLoyalty() != null) ? ("[" + card.getLoyalty() + "]") : "");
-        cardInfo.add("\033 " + ((card.getFlavor() != null) ? card.getFlavor() : " ") + "\033");
+        cardInfo.add(((card.getFlavor() != null) ? card.getFlavor() : " "));
         return cardInfo.toArray(new String[0]);
     }
 }
