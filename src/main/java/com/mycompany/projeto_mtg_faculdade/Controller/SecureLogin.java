@@ -21,7 +21,8 @@ import javax.swing.JOptionPane;
  * @author joaox
  */
 public class SecureLogin {
-     private static String filePath = "data/creds";
+
+    private static String filePath = "data/creds";
     private BufferedReader leitor = null;
 
     private static String SHA512(String hash) {
@@ -48,12 +49,12 @@ public class SecureLogin {
         String hashedUsername = SHA512(username);
         String hashedPassword = SHA512(password);
         System.out.println(filePath);
-        
+
         if (userExists(hashedUsername)) {
             JOptionPane.showMessageDialog(null, "Username already exists!");
             return false;
         }
-        
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             writer.write(hashedUsername + "-" + hashedPassword);
             writer.newLine();
@@ -64,7 +65,7 @@ public class SecureLogin {
             e.printStackTrace();
             return false;
         }
-        
+
     }
 
     public boolean LoginUser(String user, String pass) throws FileNotFoundException, IOException {
@@ -83,7 +84,6 @@ public class SecureLogin {
             String getToken = linha.nextToken().trim();
             String username = getToken.substring(0, getToken.indexOf("-"));
             String password = getToken.substring(getToken.indexOf("-") + 1);
-            System.out.println(username + password);
 
             if (userof.equals(username) && passof.equals(password)) {
                 return true;
@@ -91,7 +91,61 @@ public class SecureLogin {
         }
         return false;
     }
-    
+
+    public boolean updateUser(String oldUsername, String newUsername, String newPassword) throws IOException {
+        String hashedOldUsername = SHA512(oldUsername);
+        String hashedNewUsername = SHA512(newUsername);
+        String hashedNewPassword = SHA512(newPassword);
+        StringBuilder updatedData = new StringBuilder();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("-");
+                if (parts.length > 0 && parts[0].equals(hashedOldUsername)) {
+                    updatedData.append(hashedNewUsername).append("-").append(hashedNewPassword).append("\n");
+                } else {
+                    updatedData.append(line).append("\n");
+                }
+            }
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write(updatedData.toString());
+            JOptionPane.showMessageDialog(null, "User updated successfully!");
+            return true;
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error updating user: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean deleteUser(String username) throws IOException {
+        String userHash = SHA512(username);
+        StringBuilder newData = new StringBuilder();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("-");
+                if (parts.length > 0 && !parts[0].equals(userHash)) {
+                    newData.append(line).append("\n");
+                }
+            }
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write(newData.toString());
+            JOptionPane.showMessageDialog(null, "User deleted successfully!");
+            return true;
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error deleting user: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     private boolean userExists(String username) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -104,19 +158,6 @@ public class SecureLogin {
             return false; // User not found
         }
     }
-    
-    public boolean updateUser(String oldUsername, String newUsername, String newPassword) throws IOException {
-        String hashedOldUsername = SHA512(oldUsername);
-        String hashedNewUsername = SHA512(newUsername);
-        String hashedNewPassword = SHA512(newPassword);
 
-        // Check if the user exists
-        if (!userExists(hashedOldUsername)) {
-            JOptionPane.showMessageDialog(null, "User does not exist!");
-            return false;
-        }
-        // Create a temporary file to store updated credentials
-        return false;
-    }
 
 }

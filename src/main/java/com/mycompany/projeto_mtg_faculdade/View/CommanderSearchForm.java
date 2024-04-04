@@ -83,7 +83,15 @@ public class CommanderSearchForm extends javax.swing.JFrame {
             new String [] {
                 "Quantity", "Name"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable2);
 
         jButton2.setText("Export to Arena");

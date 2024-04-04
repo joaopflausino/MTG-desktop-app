@@ -41,8 +41,6 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jButton1.setText("Login");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -119,8 +117,11 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             if (SL.LoginUser(jTextField1.getText(), jTextField2.getText())) {
-                new MainForm().setVisible(true);
-                this.setVisible(false);
+                MainForm mainform = new MainForm();
+                mainform.setMenuTextUsername(jTextField1.getText());
+                mainform.setMenuTextPassword(jTextField2.getText());
+                mainform.setVisible(true);
+                this.dispose();
             }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Error ao encontrar arquivo de login");
