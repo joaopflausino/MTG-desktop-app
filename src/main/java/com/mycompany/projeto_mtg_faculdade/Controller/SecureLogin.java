@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  */
 public class SecureLogin {
 
-    private static String filePath = "data/creds";
+    private static String filePath = "src/data/creds.txt";
     private BufferedReader leitor = null;
 
     private static String SHA512(String hash) {

@@ -50,7 +50,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel1.setText("User");
 
-        jLabel2.setText("PassWord");
+        jLabel2.setText("Password");
 
         jButton2.setText("Register");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -86,7 +86,7 @@ public class LoginForm extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2)))
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,6 +122,8 @@ public class LoginForm extends javax.swing.JFrame {
                 mainform.setMenuTextPassword(jTextField2.getText());
                 mainform.setVisible(true);
                 this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "user ou senha estão incorretos ou não existem");
             }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Error ao encontrar arquivo de login");

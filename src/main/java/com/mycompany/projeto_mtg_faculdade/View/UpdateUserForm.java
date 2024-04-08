@@ -49,7 +49,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Update");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -113,6 +113,11 @@ public class UpdateUserForm extends javax.swing.JFrame {
         SecureLogin SL = new SecureLogin();
         try {
             SL.updateUser(oldUsername,jTextField1.getText() , jTextField2.getText());
+            MainForm mainform = new MainForm();
+            mainform.setMenuTextUsername(jTextField1.getText());
+            mainform.setMenuTextPassword(jTextField2.getText());
+            mainform.setVisible(true);
+            this.dispose();
         } catch (IOException ex) {
              JOptionPane.showMessageDialog(null, "Problem Updating user");
         }
@@ -121,7 +126,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void mains(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

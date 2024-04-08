@@ -73,7 +73,7 @@ public class ControllerFileText extends ControllerFile {
     public boolean escrever(boolean append) {
         if (arquivo != null) {
             try {
-                escritor = new BufferedWriter(new FileWriter(arquivo, append));
+                escritor = new BufferedWriter(new FileWriter(arquivo+".txt", append));
                 escritor.write(getTexto());
                 escritor.close();
                 return true;
