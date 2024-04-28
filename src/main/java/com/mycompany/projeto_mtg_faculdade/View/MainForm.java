@@ -114,13 +114,17 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        new CommanderSearchForm().setVisible(true);
+        new TradicionalSearchForm().setVisible(true);
         
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        new LoginForm().setVisible(true);
+        try {
+            // TODO add your handling code here:
+            new LoginForm().setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 

@@ -6,7 +6,12 @@ package com.mycompany.projeto_mtg_faculdade.View;
 
 import com.mycompany.projeto_mtg_faculdade.Controller.AddToTable;
 import com.mycompany.projeto_mtg_faculdade.Controller.ControllerFileTextDeck;
+import com.mycompany.projeto_mtg_faculdade.Controller.ImageRender;
+import com.mycompany.projeto_mtg_faculdade.Model.Card;
 import com.mycompany.projeto_mtg_faculdade.Model.DisplayCards;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,6 +26,9 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
     public TradicionalSearchForm() {
         initComponents();
     }
+    
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,12 +46,12 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,24 +93,6 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable2);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Name", "Set", "Mana Cost", "Type", "Text", "Power/Toughness", "Loyalty", "Flavor Text"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable1);
-
         jButton1.setText("Pesquisar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,6 +122,27 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "image", "name", "set", "oracle text"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,13 +151,8 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jButton1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
@@ -162,7 +168,12 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jButton5))))
-                        .addGap(86, 86, 86))))
+                        .addGap(86, 86, 86))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(jButton1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,26 +184,28 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jButton4)
-                        .addGap(62, 62, 62)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(45, 45, 45)
                                         .addComponent(jButton5)))
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addComponent(jButton4)
+                                .addGap(62, 62, 62)
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -210,48 +223,54 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-        int selectedRow = jTable1.getSelectedRow();
-        DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
-        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        AddToTable Adder = new AddToTable();
-        Adder.add(selectedRow, tblModel, tblModel2);
+        //int selectedRow = jTable1.getSelectedRow();
+        //DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
+        //DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
+        //AddToTable Adder = new AddToTable();
+        //Adder.add(selectedRow, tblModel, tblModel2);
 
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:\
 
-        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
-        controler.setAcharArquivo("salvar");
-        controler.WriteDeck(true);
+        //DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
+        //ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
+        //controler.setAcharArquivo("salvar");
+        //controler.WriteDeck(true);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
-        tblModel2.setRowCount(0);
-        controler.setAcharArquivo("Abrir");
-        controler.ReadDeck();
+        //DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
+        //ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
+        //tblModel2.setRowCount(0);
+        //controler.setAcharArquivo("Abrir");
+        //controler.ReadDeck();
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+         DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
         String filter = "name=" + jTextField1.getText();
-        DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
         DisplayCards display = new DisplayCards();
-        display.fetcher(filter, tblModel);
+        try {
+            display.fetcher(filter, tblModel);
+            jTable1.getColumnModel().getColumn(0).setCellRenderer(new ImageRender());
+            jTable1.setRowHeight(100);
+        } catch (Exception ex) {
+            Logger.getLogger(TradicionalSearchForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
-        int selectedRow = jTable1.getSelectedRow();
-        DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
-        DefaultTableModel tblModel2 = (DefaultTableModel) jTable3.getModel();
-        AddToTable Adder = new AddToTable();
-        Adder.add(selectedRow, tblModel, tblModel2);
+        //int selectedRow = jTable1.getSelectedRow();
+        //DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
+        //DefaultTableModel tblModel2 = (DefaultTableModel) jTable3.getModel();
+        //AddToTable Adder = new AddToTable();
+        //Adder.add(selectedRow, tblModel, tblModel2);
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

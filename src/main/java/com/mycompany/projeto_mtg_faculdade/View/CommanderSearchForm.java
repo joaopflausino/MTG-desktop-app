@@ -197,7 +197,7 @@ public class CommanderSearchForm extends javax.swing.JFrame {
         String filter = "name=" + jTextField1.getText();
         DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
         DisplayCards display = new DisplayCards();
-        display.fetcher(filter, tblModel);
+        //display.fetcher(filter, tblModel);
         
     }//GEN-LAST:event_jButton1MouseClicked
 

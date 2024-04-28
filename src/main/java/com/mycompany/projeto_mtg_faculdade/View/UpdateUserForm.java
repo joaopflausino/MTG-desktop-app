@@ -101,7 +101,8 @@ public class UpdateUserForm extends javax.swing.JFrame {
                 .addGap(50, 50, 50))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(414, 307));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

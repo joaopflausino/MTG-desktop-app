@@ -3,26 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.projeto_mtg_faculdade.Model;
-import io.magicthegathering.javasdk.resource.Card;
+import com.mycompany.projeto_mtg_faculdade.Model.Card;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.Icon;
 /**
  *
  * @author joaox
  */
 public class CardPrinter {
     
-    String[] getCardInfo(Card card) {
-        List<String> cardInfo = new ArrayList<>();
+    Object[] getCardInfo(Card card,Icon resizedIconFromFile) {
+        List<Object> cardInfo = new ArrayList<>();
+        cardInfo.add(resizedIconFromFile);
         cardInfo.add(card.getName());
-        cardInfo.add(card.getSetName());
-        cardInfo.add(card.getManaCost());
-        cardInfo.add(card.getType());
-        cardInfo.add(card.getText());
-        cardInfo.add((card.getPower() != null) ? (card.getPower() + "/" + card.getToughness()) : "");
-        cardInfo.add((card.getLoyalty() != null) ? ("[" + card.getLoyalty() + "]") : "");
-        cardInfo.add(((card.getFlavor() != null) ? card.getFlavor() : " "));
-        return cardInfo.toArray(new String[0]);
+        cardInfo.add(card.getSet());
+        cardInfo.add(card.getOracleText());
+        return cardInfo.toArray(new Object[0]);
     }
 }
 
