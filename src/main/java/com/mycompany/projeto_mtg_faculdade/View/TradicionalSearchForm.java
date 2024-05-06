@@ -223,30 +223,30 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-        //int selectedRow = jTable1.getSelectedRow();
-        //DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
-        //DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        //AddToTable Adder = new AddToTable();
-        //Adder.add(selectedRow, tblModel, tblModel2);
+        int selectedRow = jTable1.getSelectedRow();
+        DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
+        AddToTable Adder = new AddToTable();
+        Adder.add(selectedRow, tblModel, tblModel2);
 
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:\
 
-        //DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        //ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
-        //controler.setAcharArquivo("salvar");
-        //controler.WriteDeck(true);
+        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
+        ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
+        controler.setAcharArquivo("salvar");
+        controler.WriteDeck(true);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        //DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        //ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
-        //tblModel2.setRowCount(0);
-        //controler.setAcharArquivo("Abrir");
-        //controler.ReadDeck();
+        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
+        ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
+        tblModel2.setRowCount(0);
+        controler.setAcharArquivo("Abrir");
+        controler.ReadDeck();
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -266,11 +266,11 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
-        //int selectedRow = jTable1.getSelectedRow();
-        //DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
-        //DefaultTableModel tblModel2 = (DefaultTableModel) jTable3.getModel();
-        //AddToTable Adder = new AddToTable();
-        //Adder.add(selectedRow, tblModel, tblModel2);
+        int selectedRow = jTable1.getSelectedRow();
+        DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel tblModel2 = (DefaultTableModel) jTable3.getModel();
+        AddToTable Adder = new AddToTable();
+        Adder.add(selectedRow, tblModel, tblModel2);
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

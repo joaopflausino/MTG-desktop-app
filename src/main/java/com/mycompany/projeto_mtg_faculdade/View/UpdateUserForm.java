@@ -16,6 +16,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
     /**
      * Creates new form UpdateUserForm
      */
+    SecureLogin SL = new SecureLogin();
     
     public String oldUsername;
     
@@ -46,8 +47,9 @@ public class UpdateUserForm extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("Update");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -66,6 +68,13 @@ public class UpdateUserForm extends javax.swing.JFrame {
 
         jLabel2.setText("Password");
 
+        jButton2.setText("Delete User");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,6 +82,8 @@ public class UpdateUserForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(147, 147, 147)
                 .addComponent(jButton1)
+                .addGap(38, 38, 38)
+                .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 104, Short.MAX_VALUE)
@@ -97,7 +108,9 @@ public class UpdateUserForm extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(57, 57, 57)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(50, 50, 50))
         );
 
@@ -123,6 +136,22 @@ public class UpdateUserForm extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, "Problem Updating user");
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(null, "This will delete the user permanently", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (result == JOptionPane.YES_OPTION) {
+            try {
+                SL.deleteUser(oldUsername);
+                new LoginForm().setVisible(true);
+                this.dispose();
+                MainForm mainform = new MainForm();
+                mainform.dispose();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Account could not be deleted");
+            }
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -161,6 +190,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;

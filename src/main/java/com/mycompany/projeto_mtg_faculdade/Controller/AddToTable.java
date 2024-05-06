@@ -15,7 +15,7 @@ public class AddToTable {
    public void add(int selectedRow,DefaultTableModel tblModel,DefaultTableModel  tblModel2) {
        try{
            if (selectedRow != -1) {
-               Object selectedItem = tblModel.getValueAt(selectedRow, 0);
+               Object selectedItem = tblModel.getValueAt(selectedRow, 1);
                boolean itemExists = false;
                int rowCount = tblModel2.getRowCount();
 

@@ -2,10 +2,13 @@ com\mycompany\projeto_mtg_faculdade\Controller\Download_URL.class
 com\mycompany\projeto_mtg_faculdade\View\LoginForm$7.class
 com\mycompany\projeto_mtg_faculdade\View\TradicionalSearchForm$2.class
 com\mycompany\projeto_mtg_faculdade\View\UpdateUserForm$1.class
+com\mycompany\projeto_mtg_faculdade\Model\LibraryModel.class
+com\mycompany\projeto_mtg_faculdade\View\LibraryForm$2.class
 com\mycompany\projeto_mtg_faculdade\View\RegisterForm.class
 com\mycompany\projeto_mtg_faculdade\View\MainForm$2.class
 com\mycompany\projeto_mtg_faculdade\View\LoginForm$1.class
 com\mycompany\projeto_mtg_faculdade\View\CommanderSearchForm$5.class
+com\mycompany\projeto_mtg_faculdade\View\LibraryForm.class
 com\mycompany\projeto_mtg_faculdade\View\MainForm$1.class
 com\mycompany\projeto_mtg_faculdade\Controller\ControllerFileTextDeck.class
 com\mycompany\projeto_mtg_faculdade\View\LoginForm$6.class
@@ -18,6 +21,7 @@ com\mycompany\projeto_mtg_faculdade\View\TradicionalSearchForm$3.class
 com\mycompany\projeto_mtg_faculdade\View\LoginForm.class
 com\mycompany\projeto_mtg_faculdade\View\UpdateUserForm.class
 com\mycompany\projeto_mtg_faculdade\View\CommanderSearchForm$4.class
+com\mycompany\projeto_mtg_faculdade\View\UpdateUserForm$4.class
 com\mycompany\projeto_mtg_faculdade\View\UpdateUserForm$3.class
 com\mycompany\projeto_mtg_faculdade\View\CommanderSearchForm$3.class
 com\mycompany\projeto_mtg_faculdade\View\TradicionalSearchForm$1.class
@@ -41,8 +45,10 @@ com\mycompany\projeto_mtg_faculdade\Model\Card.class
 com\mycompany\projeto_mtg_faculdade\Model\ScryfallAPICall.class
 com\mycompany\projeto_mtg_faculdade\View\LoginForm$3.class
 com\mycompany\projeto_mtg_faculdade\View\MainForm$3.class
+com\mycompany\projeto_mtg_faculdade\View\LibraryForm$3.class
 com\mycompany\projeto_mtg_faculdade\Controller\ControllerFileText.class
 com\mycompany\projeto_mtg_faculdade\View\CommanderSearchForm$9.class
+com\mycompany\projeto_mtg_faculdade\View\MainForm$6.class
 com\mycompany\projeto_mtg_faculdade\View\TradicionalSearchForm$9.class
 com\mycompany\projeto_mtg_faculdade\View\TradicionalSearchForm$6.class
 com\mycompany\projeto_mtg_faculdade\View\CommanderSearchForm.class
@@ -51,5 +57,6 @@ com\mycompany\projeto_mtg_faculdade\View\LoginForm$2.class
 com\mycompany\projeto_mtg_faculdade\View\TradicionalSearchForm$7.class
 com\mycompany\projeto_mtg_faculdade\Controller\SecureLogin.class
 com\mycompany\projeto_mtg_faculdade\Controller\ImageRender.class
+com\mycompany\projeto_mtg_faculdade\View\LibraryForm$1.class
 com\mycompany\projeto_mtg_faculdade\View\TradicionalSearchForm$8.class
 com\mycompany\projeto_mtg_faculdade\View\TradicionalSearchForm.class
