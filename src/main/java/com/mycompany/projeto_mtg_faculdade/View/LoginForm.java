@@ -177,22 +177,22 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
         try {
-            if (SL.LoginUser(jTextField_Username.getText(), String.valueOf(String.valueOf(jPasswordField1.getPassword())))) {
+            // TODO add your handling code here:
+            if (SL.loginUser(jTextField_Username.getText(), String.valueOf(String.valueOf(jPasswordField1.getPassword())))) {
                 MainForm mainform = new MainForm();
                 mainform.setMenuTextUsername(jTextField_Username.getText());
                 mainform.setMenuTextPassword(String.valueOf(jPasswordField1.getPassword()));
                 mainform.setVisible(true);
                 this.dispose();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "user ou senha estão incorretos ou não existem");
             }
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Error ao encontrar arquivo de login");
+            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-       
+
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked

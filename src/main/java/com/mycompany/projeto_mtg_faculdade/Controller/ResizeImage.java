@@ -31,7 +31,7 @@ public class ResizeImage {
     public ImageIcon resizeImageFromFile(String filePath) throws IOException {
         ImageIcon resizedIcon = null;
         Image inImage = ImageIO.read(new File("src/main/resources" + filePath));
-        
+
 
         // Check if URL is null
         if (inImage == null) {

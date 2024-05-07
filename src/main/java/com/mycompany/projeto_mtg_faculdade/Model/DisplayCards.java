@@ -9,15 +9,11 @@ import com.mycompany.projeto_mtg_faculdade.Controller.ResizeImage;
 import com.mycompany.projeto_mtg_faculdade.Model.Card;
 import com.mycompany.projeto_mtg_faculdade.Model.CardPrinter;
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import org.apache.commons.io.FileUtils;
 
 /**
  *

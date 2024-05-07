@@ -7,11 +7,17 @@ package com.mycompany.projeto_mtg_faculdade.View;
 import com.mycompany.projeto_mtg_faculdade.Controller.ControllerFileTextDeck;
 import com.mycompany.projeto_mtg_faculdade.Model.DisplayCards;
 import com.mycompany.projeto_mtg_faculdade.Controller.AddToTable;
+import com.mycompany.projeto_mtg_faculdade.Controller.TableActions;
 import io.magicthegathering.javasdk.api.CardAPI;
 import io.magicthegathering.javasdk.resource.Card;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -22,12 +28,49 @@ public class CommanderSearchForm extends javax.swing.JFrame {
     /**
      * Creates new form SearchForm
      */
-    
-    
+    public String name;
+    public String set;
+    public String text;
+    public String quantity;
+    public String nameDeck;   
     public CommanderSearchForm() {
         initComponents();
     }
+    
+    public String getValueTableDeckQuantity() {
+        DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
+        quantity = tableModel.getValueAt(jTable2.getSelectedRow(), 0).toString();
 
+        return quantity;
+    }
+    
+    public String getValueTableDeckName() {
+        DefaultTableModel tableModel = (DefaultTableModel) jTable2.getModel();
+        nameDeck = tableModel.getValueAt(jTable2.getSelectedRow(), 1).toString();
+
+        return nameDeck;
+    }
+    
+    public String getValueTableName() {
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        name = tableModel.getValueAt(jTable1.getSelectedRow(),1).toString();
+        
+        return name;
+    }
+
+    public String getValueTableSet() {
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        set = tableModel.getValueAt(jTable1.getSelectedRow(),2).toString();
+        
+        return set;
+    }
+    
+    public String getValueTableText() {
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        text = tableModel.getValueAt(jTable1.getSelectedRow(), 3).toString();
+        
+        return text;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,8 +82,6 @@ public class CommanderSearchForm extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
@@ -48,6 +89,12 @@ public class CommanderSearchForm extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,26 +104,6 @@ public class CommanderSearchForm extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Name", "Set", "Mana Cost", "Type", "Text", "Power/Toughness", "Loyalty", "Flavor Text"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable1.setColumnSelectionAllowed(true);
-        jScrollPane2.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,6 +160,52 @@ public class CommanderSearchForm extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setText("Remove From Search");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        jButton8.setText("Add new Card");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
+        jButton9.setText("Update Cards");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
+
+        jButton10.setText("Update Deck");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "image", "name", "set", "oracle text"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,7 +218,15 @@ public class CommanderSearchForm extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(216, 216, 216)
+                                .addComponent(jButton7)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton8)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)
                         .addGap(18, 18, 18)
@@ -156,10 +237,11 @@ public class CommanderSearchForm extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton3)))
                         .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton6)
+                            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,23 +252,33 @@ public class CommanderSearchForm extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addComponent(jButton4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(jButton5)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(jButton10)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton2)
+                            .addComponent(jButton3)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jButton4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jButton5)
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton7)
+                            .addComponent(jButton8)
+                            .addComponent(jButton9))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -194,48 +286,34 @@ public class CommanderSearchForm extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        String filter = "name=" + jTextField1.getText();
-        DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
-        DisplayCards display = new DisplayCards();
-        //display.fetcher(filter, tblModel);
+        TableActions tableActions = new TableActions();
+        tableActions.SearchAddToTable(jTable1, jTextField1);
         
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-        int selectedRow = jTable1.getSelectedRow();
-        DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
-        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        AddToTable Adder = new AddToTable();
-        Adder.add(selectedRow, tblModel, tblModel2);
+        TableActions tableActions = new TableActions();
+        tableActions.AddItem(jTable1, jTable2);
         
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
-        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        int[] selectedRows = jTable2.getSelectedRows();
-        for (int i = selectedRows.length - 1; i >= 0; i--) {
-            tblModel2.removeRow(selectedRows[i]);
-        }
+        TableActions tableActions = new TableActions();
+        tableActions.removeFromTable(jTable2);
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:\
-        
-        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
-        controler.setAcharArquivo("salvar");
-        controler.WriteDeck(true);
+        TableActions tableActions = new TableActions();
+        tableActions.SaveTable(jTable2);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
-        tblModel2.setRowCount(0);
-        controler.setAcharArquivo("Abrir");
-        controler.ReadDeck();
+        TableActions tableActions = new TableActions();
+        tableActions.ReadFileToTable(jTable2);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
@@ -255,6 +333,55 @@ public class CommanderSearchForm extends javax.swing.JFrame {
                 }
     }//GEN-LAST:event_jButton6MouseClicked
 
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        TableActions tableActions = new TableActions();
+        tableActions.removeFromTable(jTable1);
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // TODO add your handling code here:
+        TableActions tableActions = new TableActions();
+        try {
+            tableActions.AddMockCard(jTable1);
+        } catch (IOException ex) {
+            Logger.getLogger(CommanderSearchForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+        UpdateSearchForm updateForm = new UpdateSearchForm();
+        updateForm.setUpdateFormName(getValueTableName());
+        updateForm.setUpdateFormSet(getValueTableSet());
+        updateForm.setUpdateFormText(getValueTableText());
+        updateForm.setTable(jTable1);
+        updateForm.setIndex(jTable1.getSelectedRow());
+        updateForm.setVisible(true);
+
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+        UpdateDeckForm updateDeckForm = new UpdateDeckForm();
+        updateDeckForm.setTable(jTable2);
+        updateDeckForm.setUpdateFormQuantity(getValueTableDeckQuantity());
+        updateDeckForm.setUpdateFormName(getValueTableDeckName());
+        updateDeckForm.setVisible(true);
+    }//GEN-LAST:event_jButton10MouseClicked
+    public void ChangeRowFromTable(JTable table,int index,Icon resizedImageFromFile, String name, String set, String text) {
+        DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+        System.out.println(index);
+
+        tableModel.setValueAt(resizedImageFromFile, index, 0);
+        tableModel.setValueAt(name, index+1, 1);
+        tableModel.setValueAt(set, index+1, 2);
+        tableModel.setValueAt(text, index+1, 3);
+
+
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -293,11 +420,15 @@ public class CommanderSearchForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

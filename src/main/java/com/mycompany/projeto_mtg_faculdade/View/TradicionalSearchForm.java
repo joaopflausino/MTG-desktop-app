@@ -7,6 +7,7 @@ package com.mycompany.projeto_mtg_faculdade.View;
 import com.mycompany.projeto_mtg_faculdade.Controller.AddToTable;
 import com.mycompany.projeto_mtg_faculdade.Controller.ControllerFileTextDeck;
 import com.mycompany.projeto_mtg_faculdade.Controller.ImageRender;
+import com.mycompany.projeto_mtg_faculdade.Controller.TableActions;
 import com.mycompany.projeto_mtg_faculdade.Model.Card;
 import com.mycompany.projeto_mtg_faculdade.Model.DisplayCards;
 import java.util.List;
@@ -214,53 +215,32 @@ public class TradicionalSearchForm extends javax.swing.JFrame {
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
-        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        int[] selectedRows = jTable2.getSelectedRows();
-        for (int i = selectedRows.length - 1; i >= 0; i--) {
-            tblModel2.removeRow(selectedRows[i]);
-        }
+        TableActions tableActions = new TableActions();
+        tableActions.removeFromTable(jTable2);
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-        int selectedRow = jTable1.getSelectedRow();
-        DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
-        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        AddToTable Adder = new AddToTable();
-        Adder.add(selectedRow, tblModel, tblModel2);
-
+        TableActions tableActions = new TableActions();
+        tableActions.AddItem(jTable1, jTable2);
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:\
-
-        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
-        controler.setAcharArquivo("salvar");
-        controler.WriteDeck(true);
+        // TODO add your handling code here:
+        TableActions tableActions = new TableActions();
+        tableActions.SaveTable(jTable2);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        DefaultTableModel tblModel2 = (DefaultTableModel) jTable2.getModel();
-        ControllerFileTextDeck controler = new ControllerFileTextDeck(tblModel2);
-        tblModel2.setRowCount(0);
-        controler.setAcharArquivo("Abrir");
-        controler.ReadDeck();
+        TableActions tableActions = new TableActions();
+        tableActions.ReadFileToTable(jTable2);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-         DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
-        String filter = "name=" + jTextField1.getText();
-        DisplayCards display = new DisplayCards();
-        try {
-            display.fetcher(filter, tblModel);
-            jTable1.getColumnModel().getColumn(0).setCellRenderer(new ImageRender());
-            jTable1.setRowHeight(100);
-        } catch (Exception ex) {
-            Logger.getLogger(TradicionalSearchForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        TableActions tableActions = new TableActions();
+        tableActions.SearchAddToTable(jTable1, jTextField1);
 
     }//GEN-LAST:event_jButton1MouseClicked
 
