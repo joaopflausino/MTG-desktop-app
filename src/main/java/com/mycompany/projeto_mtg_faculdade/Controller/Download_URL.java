@@ -14,29 +14,31 @@ import com.google.common.io.Resources;
 import com.mycompany.projeto_mtg_faculdade.Model.Card;
 import java.util.List;
 
-
 public class Download_URL {
-    private final String fromSourceToResource ="src/main/resources/";
-    public String downloadFile(String directoryName,List <Card> cards) throws IOException {
+
+    private final String fromSourceToResource = "src/main/resources/";
+
+    public String downloadFile(String directoryName,String ImageUrl,String cardId) throws IOException {
         // Make sure that this directory exists
-        for (Card card : cards) {
-            try {
-                System.out.println(card.getImageUrl());
-                System.out.println(card.getId());
-                if(card.getImageUrl() != null){
+
+        try {
+            System.out.println(ImageUrl);
+            System.out.println(cardId);
+            if (ImageUrl != null) {
                 saveFileFromUrlWithJavaIO(
-                        fromSourceToResource + directoryName + card.getId()+".jpg",card.getImageUrl());
-                System.out.println("Download finished");    
-                }
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+                        fromSourceToResource + directoryName + cardId + ".jpg", ImageUrl);
+                System.out.println("Download finished");
             }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
         System.out.println("vo sair da funcao");
         return null;
     }
+
     // Using Java IO
     private static void saveFileFromUrlWithJavaIO(String fileName, String fileUrl)
     throws MalformedURLException, IOException {

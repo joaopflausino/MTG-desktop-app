@@ -70,9 +70,11 @@ public class TableActions {
 
     public void SearchAddToTable(JTable table, JTextField jTextField) {
         DefaultTableModel tblModel = (DefaultTableModel) table.getModel();
-        String filter = "name=" + jTextField.getText();
+        String filter = jTextField.getText();
         DisplayCards display = new DisplayCards();
         try {
+            System.out.println("asdasas");
+
             display.fetcher(filter, tblModel);
             table.getColumnModel().getColumn(0).setCellRenderer(new ImageRender());
             table.setRowHeight(100);

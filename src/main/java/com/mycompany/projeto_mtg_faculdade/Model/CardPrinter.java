@@ -13,25 +13,27 @@ import javax.swing.Icon;
  */
 public class CardPrinter {
     
-    public Object[] getCardInfo(Card card,Icon resizedIconFromFile) {
+    public Object[] getCardInfo(Card card, Icon resizedIconFromFile) {
         List<Object> cardInfo = new ArrayList<>();
         cardInfo.add(resizedIconFromFile);
         cardInfo.add(card.getName());
         cardInfo.add(card.getSet());
         cardInfo.add(card.getOracleText());
+        cardInfo.add(card.getId());
         return cardInfo.toArray(new Object[0]);
     }
-    
-    public Object[] getCardMockInfo(Icon resizedIconFromFile){
+
+    public Object[] getCardMockInfo(Icon resizedIconFromFile) {
         List<Object> cardMock = new ArrayList<>();
         cardMock.add(resizedIconFromFile);
         cardMock.add("card name");
         cardMock.add("card set");
         cardMock.add("Oracle text");
+        cardMock.add("Id");
         return cardMock.toArray(new Object[0]);
     }
-    
-    public Object[] getCardInfoUpdate(Icon resizedIconFromFile,String cardName,String cardSet,String cardText){
+
+    public Object[] getCardInfoUpdate(Icon resizedIconFromFile, String cardName, String cardSet, String cardText) {
         List<Object> cardInfoUpdate = new ArrayList<>();
         cardInfoUpdate.add(resizedIconFromFile);
         cardInfoUpdate.add("card name");
@@ -39,5 +41,14 @@ public class CardPrinter {
         cardInfoUpdate.add("Oracle text");
         return cardInfoUpdate.toArray(new Object[0]);
     }
-}
 
+    public Object[] getCardLibraryInfo(LibraryCard card, Icon resizedIconFromFile) {
+        List<Object> cardInfo = new ArrayList<>();
+        cardInfo.add(resizedIconFromFile);
+        cardInfo.add(card.getName());
+        cardInfo.add(card.getSet());
+        cardInfo.add(card.getOracleText());
+        cardInfo.add(card.getQuantity());
+        return cardInfo.toArray(new Object[0]);
+    }
+}

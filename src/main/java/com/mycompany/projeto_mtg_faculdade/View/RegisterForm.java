@@ -4,7 +4,7 @@
  */
 package com.mycompany.projeto_mtg_faculdade.View;
 
-import com.mycompany.projeto_mtg_faculdade.Controller.SecureLogin;
+import com.mycompany.projeto_mtg_faculdade.Controller.LoginController;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -18,7 +18,7 @@ public class RegisterForm extends javax.swing.JFrame {
      * Creates new form RegisterForm
      */
     
-    SecureLogin SL = new SecureLogin();
+    LoginController SL = new LoginController();
     
     public RegisterForm() {
         initComponents();

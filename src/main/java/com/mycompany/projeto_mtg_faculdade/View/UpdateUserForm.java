@@ -4,7 +4,7 @@
  */
 package com.mycompany.projeto_mtg_faculdade.View;
 
-import com.mycompany.projeto_mtg_faculdade.Controller.SecureLogin;
+import com.mycompany.projeto_mtg_faculdade.Controller.LoginController;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 /**
@@ -16,7 +16,7 @@ public class UpdateUserForm extends javax.swing.JFrame {
     /**
      * Creates new form UpdateUserForm
      */
-    SecureLogin SL = new SecureLogin();
+    LoginController SL = new LoginController();
     
     public String oldUsername;
     
@@ -124,17 +124,13 @@ public class UpdateUserForm extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        SecureLogin SL = new SecureLogin();
-        try {
-            SL.updateUser(oldUsername,jTextField1.getText() , jTextField2.getText());
-            MainForm mainform = new MainForm();
-            mainform.setMenuTextUsername(jTextField1.getText());
-            mainform.setMenuTextPassword(jTextField2.getText());
-            mainform.setVisible(true);
-            this.dispose();
-        } catch (IOException ex) {
-             JOptionPane.showMessageDialog(null, "Problem Updating user");
-        }
+        LoginController SL = new LoginController();
+        SL.updateUser(oldUsername,jTextField1.getText() , jTextField2.getText());
+        MainForm mainform = new MainForm();
+        mainform.setMenuTextUsername(jTextField1.getText());
+        mainform.setMenuTextPassword(jTextField2.getText());
+        mainform.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked

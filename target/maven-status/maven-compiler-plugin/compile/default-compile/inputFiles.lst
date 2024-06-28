@@ -1,26 +1,32 @@
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\NumberDocumentFilter.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\ControllerFileTextDeck.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\ControllerFile.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\Card.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\UpdateSearchForm.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\Download_URL.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\ResizeImage.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\LibraryModel.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\MainForm.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\TradicionalSearchForm.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\RegisterForm.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\TableActions.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\ControllerFileText.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\CardListResponse.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\User.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\LoginForm.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\CommanderSearchForm.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\SecureLogin.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\ScryfallAPICall.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\UpdateDeckForm.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\AddToTable.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\ImageRender.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\LibraryForm.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\CardPrinter.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\DisplayCards.java
-C:\Users\Jomes\Documents\NetBeansProjects\MTG-desktop-app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\UpdateUserForm.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\JDBCUtil.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\ImageRender.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\CardListResponse.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\Download_URL.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\DatabaseConnectionController.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\Card.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\ControllerFile.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\LibraryActionsController.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\AddToTable.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\User.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\UpdateUserForm.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\LibraryForm.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\LoginController.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\ControllerFileText.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\UpdateSearchForm.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\ResizeImage.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\CommanderSearchForm.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\NumberDocumentFilter.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\UpdateDeckForm.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\TableActions.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\CardsDatabseConnection.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\UserLibraryController.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\RegisterForm.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\DisplayCards.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\UserLibraryModel.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Controller\ControllerFileTextDeck.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\LoginForm.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\ScryfallAPICall.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\CardPrinter.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\MainForm.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\Model\LibraryCard.java
+C:\Users\joaox\OneDrive\Documents\NetBeansProjects\Projeto_Mtg_Faculdade\MTG desktop app\src\main\java\com\mycompany\projeto_mtg_faculdade\View\TradicionalSearchForm.java

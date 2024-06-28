@@ -5,7 +5,7 @@
 package com.mycompany.projeto_mtg_faculdade.View;
 
 import com.mycompany.projeto_mtg_faculdade.Controller.ResizeImage;
-import com.mycompany.projeto_mtg_faculdade.Controller.SecureLogin;
+import com.mycompany.projeto_mtg_faculdade.Controller.LoginController;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.IOException;
@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import com.formdev.flatlaf.FlatDarculaLaf;
+import java.util.UUID;
 import java.util.logging.Level;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -27,7 +28,7 @@ public class LoginForm extends javax.swing.JFrame {
     /**
      * Creates new form LoginForm
      */
-    SecureLogin SL = new SecureLogin();
+    LoginController SL = new LoginController();
     ResizeImage RI = new ResizeImage();
 
     public LoginForm() throws IOException {
@@ -177,19 +178,18 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        try {
-            // TODO add your handling code here:
-            if (SL.loginUser(jTextField_Username.getText(), String.valueOf(String.valueOf(jPasswordField1.getPassword())))) {
-                MainForm mainform = new MainForm();
-                mainform.setMenuTextUsername(jTextField_Username.getText());
-                mainform.setMenuTextPassword(String.valueOf(jPasswordField1.getPassword()));
-                mainform.setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "user ou senha estão incorretos ou não existem");
-            }
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+        // TODO add your handling code here:
+        String userId = SL.loginUser(jTextField_Username.getText(), String.valueOf(jPasswordField1.getPassword()));
+        if (userId != null && !userId.trim().isEmpty()) {
+            MainForm mainform = new MainForm();
+            mainform.setMenuTextUsername(jTextField_Username.getText());
+            mainform.setMenuTextPassword(String.valueOf(jPasswordField1.getPassword()));
+            mainform.setUserId(userId); // Pass the user_id to the MainForm
+            mainform.setVisible(true);
+            System.out.println(userId);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "user ou senha estão incorretos ou não existem");
         }
 
 

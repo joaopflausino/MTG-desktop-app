@@ -24,12 +24,13 @@ public class DisplayCards {
     private String directoryName = "/Images/ImagesUrl/";
 
     public int fetcher(String filter, DefaultTableModel tblModel) throws Exception {
-        ScryfallAPICall printer = new ScryfallAPICall();
+        CardListResponse cardListResponse = new CardListResponse();
         List<Card> cards = new ArrayList<>();
         CardPrinter printCardsJtable = new CardPrinter();
         File DeleteDir = new File("src/main/resources"+directoryName); 
         int numresult = 0;
         int iconHeight = 0;
+
 
        // try {
             String[] myFiles;
@@ -41,14 +42,15 @@ public class DisplayCards {
                 }
             }
             tblModel.setRowCount(0);
-            cards = printer.getAllCards(filter);
+            cards = cardListResponse.getData(filter);
+            System.out.println(cards);
             if (cards.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Nome não encontrado");
             } else {
                 Download_URL file = new Download_URL();
-                String filepath = file.downloadFile(directoryName,cards);
                 for (Card card : cards) {
-                    if (card.getId() != null) {                 
+                    if (card.getId() != null) {
+                        String filepath = file.downloadFile(directoryName, card.getImageUrl(),card.getId());
                         ResizeImage RI = new ResizeImage();
                         RI.SetTargetWidth(122, 170);
                         Icon resizedIconFromFile = RI.resizeImageFromFile(directoryName + card.getId()+ ".jpg");

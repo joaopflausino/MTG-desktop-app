@@ -4,15 +4,8 @@
  */
 package com.mycompany.projeto_mtg_faculdade.View;
 
-import com.mycompany.projeto_mtg_faculdade.Controller.ControllerFileTextDeck;
-import com.mycompany.projeto_mtg_faculdade.Model.DisplayCards;
-import com.mycompany.projeto_mtg_faculdade.Controller.AddToTable;
 import com.mycompany.projeto_mtg_faculdade.Controller.TableActions;
-import io.magicthegathering.javasdk.api.CardAPI;
-import io.magicthegathering.javasdk.resource.Card;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -193,11 +186,11 @@ public class CommanderSearchForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "image", "name", "set", "oracle text"
+                "image", "name", "set", "oracle text", "id"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

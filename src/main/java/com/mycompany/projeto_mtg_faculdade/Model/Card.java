@@ -4,67 +4,73 @@
  */
 package com.mycompany.projeto_mtg_faculdade.Model;
 import com.google.gson.annotations.SerializedName;
-import java.util.List;
 /**
  *
  * @author Jomes
  */
 public class Card {
+        
+    private String imageUrl;
     private String name;
-    @SerializedName("mana_cost")
     private String manaCost;
-    @SerializedName("type_line")
     private String typeLine;
-    @SerializedName("oracle_text")
     private String oracleText;
-    @SerializedName("image_uris")
-    private ImageUris imageUris;
-    @SerializedName("set")
-    private  String set;
-   @SerializedName("id")
+    private String set;
     private String id;
 
-    // Getters
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getManaCost() {
         return manaCost;
     }
 
+    public void setManaCost(String manaCost) {
+        this.manaCost = manaCost;
+    }
+
     public String getTypeLine() {
         return typeLine;
+    }
+
+    public void setTypeLine(String typeLine) {
+        this.typeLine = typeLine;
     }
 
     public String getOracleText() {
         return oracleText;
     }
-    
-    public String getSet(){
+
+    public void setOracleText(String oracleText) {
+        this.oracleText = oracleText;
+    }
+
+    public String getSet() {
         return set;
     }
-    
+
+    public void setSet(String set) {
+        this.set = set;
+    }
+
     public String getId() {
         return id;
     }
 
-    public String getImageUrl() {
-        if (imageUris != null) {
-            return imageUris.getNormal();
-        } else {
-            return null;
-        }
-    }
-    
-    static class ImageUris {
-
-        private String normal;
-
-        // Getter for normal image URL
-        public String getNormal() {
-            return normal;
-        }
+    public void setId(String id) {
+        this.id = id;
     }
 }
-

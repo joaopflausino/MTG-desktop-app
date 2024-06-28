@@ -13,12 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ScryfallAPICall {
-    private static final OkHttpClient httpClient = new OkHttpClient();
-    private static final Gson gson = new Gson();
+    //private static final OkHttpClient httpClient = new OkHttpClient();
+    //private static final Gson gson = new Gson();
 
     public List<Card> getAllCards(String cardName) throws Exception {
         List<Card> allCards = new ArrayList<>();
-        String url = "https://api.scryfall.com/cards/search?q=%2B%2B" + cardName;
+        CardListResponse cardListResponse = new CardListResponse();
+        System.out.println(cardName);
+        /*String url = "https://api.scryfall.com/cards/search?q=%2B%2B" + cardName;
 
         while (url != null) {
             Request request = new Request.Builder()
@@ -36,8 +38,9 @@ public class ScryfallAPICall {
             allCards.addAll(cardListResponse.getData());
 
             // Get the URL of the next page, if available
-            url = cardListResponse.getNextPage();
-        }
+            //url = cardListResponse.getNextPage();
+        }*/
+         allCards = cardListResponse.getData(cardName);
 
         return allCards;
     }

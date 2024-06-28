@@ -4,11 +4,16 @@
  */
 package com.mycompany.projeto_mtg_faculdade.View;
 
-import com.mycompany.projeto_mtg_faculdade.Controller.ImageRender;
-import com.mycompany.projeto_mtg_faculdade.Model.DisplayCards;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.table.DefaultTableModel;
+
+import com.mycompany.projeto_mtg_faculdade.Controller.DatabaseConnectionController;
+import com.mycompany.projeto_mtg_faculdade.Controller.LibraryActionsController;
+import com.mycompany.projeto_mtg_faculdade.Controller.TableActions;
+import com.mycompany.projeto_mtg_faculdade.Controller.UserLibraryController;
+import com.mycompany.projeto_mtg_faculdade.Model.LibraryCard;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -19,8 +24,15 @@ public class LibraryForm extends javax.swing.JFrame {
     /**
      * Creates new form LibraryForm
      */
+    public String userId;
+    
+    public List<LibraryCard> library = new ArrayList<>();
     public LibraryForm() {
         initComponents();
+    }
+    
+    public void setUserId(String userId){
+        this.userId = userId;
     }
 
     /**
@@ -43,8 +55,9 @@ public class LibraryForm extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("Pesquisar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -58,11 +71,11 @@ public class LibraryForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "image", "name", "set", "oracle text"
+                "image", "name", "set", "oracle text", "id"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -72,27 +85,67 @@ public class LibraryForm extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         jButton2.setText("Add 4 to library");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("Remove from library");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Image", "Name", "set", "oracle text", "quantity"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable2);
 
         jButton4.setText("Remove 1 from library");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jButton5.setText("Add 1 to library");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
 
         jButton6.setText("Delete library");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        jButton7.setText("refresh");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,6 +159,8 @@ public class LibraryForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2))
@@ -133,7 +188,8 @@ public class LibraryForm extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(jButton5)
+                    .addComponent(jButton7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -153,17 +209,136 @@ public class LibraryForm extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
-        String filter = "name=" + jTextField1.getText();
-        DisplayCards display = new DisplayCards();
-        try {
-            display.fetcher(filter, tblModel);
-            jTable1.getColumnModel().getColumn(0).setCellRenderer(new ImageRender());
-            jTable1.setRowHeight(100);
-        } catch (Exception ex) {
-            Logger.getLogger(TradicionalSearchForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            TableActions tableActions = new TableActions();
+            tableActions.SearchAddToTable(jTable1, jTextField1);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(null, "This will delete the Library permanently from the database", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (result == JOptionPane.YES_OPTION) {
+            DatabaseConnectionController dbController = new DatabaseConnectionController();
+            UserLibraryController userLibraryController = new UserLibraryController(dbController);
+            userLibraryController.deleteLibrary(userId);
+            this.dispose();
+
+        }
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        System.out.println(userId);
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+            int lastColumn = jTable1.getColumnCount() - 1;
+            String cardId = (String) jTable1.getValueAt(selectedRow, lastColumn);
+            DatabaseConnectionController dbController = new DatabaseConnectionController();
+            UserLibraryController userLibraryController = new UserLibraryController(dbController);
+            boolean success = userLibraryController.addCardToLibrary(userId, cardId, 1);
+            // Check if the operation was successful
+            if (success) {
+                JOptionPane.showMessageDialog(null,"Card added successfully.");
+                DatabaseConnectionController dbController2 = new DatabaseConnectionController();
+                LibraryActionsController libraryActionsController = new LibraryActionsController(new UserLibraryController(dbController2));
+                libraryActionsController.loadData(userId, jTable2);
+            } else {
+                JOptionPane.showMessageDialog(null,"Failed to add card.");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null,"No row selected");
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        DatabaseConnectionController dbController = new DatabaseConnectionController();
+        LibraryActionsController libraryActionsController = new LibraryActionsController(new UserLibraryController(dbController));
+        library = libraryActionsController.loadData(userId, jTable2);
+
+
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+            int lastColumn = jTable1.getColumnCount() - 1;
+            String cardId = (String) jTable1.getValueAt(selectedRow, lastColumn);
+            DatabaseConnectionController dbController = new DatabaseConnectionController();
+            UserLibraryController userLibraryController = new UserLibraryController(dbController);
+            boolean success = userLibraryController.addCardToLibrary(userId, cardId, 4);
+            // Check if the operation was successful
+            if (success) {
+                JOptionPane.showMessageDialog(null,"Card added successfully.");
+                DatabaseConnectionController dbController2 = new DatabaseConnectionController();
+                LibraryActionsController libraryActionsController = new LibraryActionsController(new UserLibraryController(dbController2));
+                library = libraryActionsController.loadData(userId, jTable2);
+
+            } else {
+                JOptionPane.showMessageDialog(null,"Failed to add card.");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null,"No row selected");
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        int selectedRow = jTable2.getSelectedRow();
+        if (selectedRow != -1) {
+            int lastColumn = jTable2.getColumnCount() - 1;
+            if (lastColumn > 1) {
+                LibraryCard selectedCard = library.get(selectedRow);
+                String id = selectedCard.getId();
+                DatabaseConnectionController dbController = new DatabaseConnectionController();
+                UserLibraryController userLibraryController = new UserLibraryController(dbController);
+                boolean success = userLibraryController.removeCardFromLibrary(userId, id, 1);
+
+                if (success) {
+                    JOptionPane.showMessageDialog(null,"Card added successfully.");
+                    DatabaseConnectionController dbController2 = new DatabaseConnectionController();
+                    LibraryActionsController libraryActionsController = new LibraryActionsController(new UserLibraryController(dbController2));
+                    library = libraryActionsController.loadData(userId, jTable2);
+
+                } else {
+                    JOptionPane.showMessageDialog(null,"Failed to add card.");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "there is only one card left");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null,"No row selected");
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+                int selectedRow = jTable2.getSelectedRow();
+        if (selectedRow != -1) {
+                LibraryCard selectedCard = library.get(selectedRow);
+                String id = selectedCard.getId();
+                DatabaseConnectionController dbController = new DatabaseConnectionController();
+                UserLibraryController userLibraryController = new UserLibraryController(dbController);
+                boolean success = userLibraryController.deleteRow(userId, id);
+
+                if (success) {
+                    JOptionPane.showMessageDialog(null,"Card deleted successfully. wait for the reload");
+                    DatabaseConnectionController dbController2 = new DatabaseConnectionController();
+                    LibraryActionsController libraryActionsController = new LibraryActionsController(new UserLibraryController(dbController2));
+                    library = libraryActionsController.loadData(userId, jTable2);
+
+                } else {
+                    JOptionPane.showMessageDialog(null,"Failed to delete card.");
+                }
+            
+
+        } else {
+            JOptionPane.showMessageDialog(null,"No row selected");
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -207,6 +382,7 @@ public class LibraryForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
